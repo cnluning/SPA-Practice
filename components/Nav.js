@@ -9,7 +9,7 @@ export default (st) => `
         (link) =>
           `<li><a href="/${link.title}" data-navigo>${link.text}</a></li>`
       )
-      .join()}
+      .join("")}
     </ul>
   </nav>
   `;
