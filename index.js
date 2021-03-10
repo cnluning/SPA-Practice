@@ -46,6 +46,10 @@ axios
       // add it to state.Blog.posts
       state.Blog.posts.push(post);
     });
+    const params = router.lastRouteResolved().params;
+    if (params) {
+      render(state[params.page]);
+    }
   });
 
 //render(state.Home);
