@@ -1,6 +1,8 @@
 import { Header, Nav, Main, Footer } from "./components";
 import * as state from "./store";
 
+import axios from "axios";
+
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 
@@ -34,6 +36,17 @@ function render(st = state.Home) {
 `;
   router.updatePageLinks();
 }
+
+axios
+  .get("https://jsonplaceholder.typicode.com/posts")
+  // handle the response from the API
+  .then((response) => {
+    // for each post in the response Array,
+    response.data.forEach((post) => {
+      // add it to state.Blog.posts
+      state.Blog.posts.push(post);
+    });
+  });
 
 //render(state.Home);
 
