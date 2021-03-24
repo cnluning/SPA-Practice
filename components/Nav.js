@@ -1,18 +1,17 @@
 import html from "html-literal";
-
-export default (st) => `
+export default (links) => html`
   <nav>
     <i class="fas fa-bars"></i>
     <ul class="hidden--mobile nav-links">
-    ${st
-      .map(
-        (link) =>
-          `<li><a href="/${link.title}" data-navigo>${link.text}</a></li>`
-      )
-      .join("")}
+      ${links.reduce(
+        (html, link) =>
+          html +
+          `<li><a href="#" title="${link.title}" data-navigo>${link.text}</a></li>`,
+        ``
+      )}
     </ul>
   </nav>
-  `;
+`;
 
 //* <li><a href="#bio">Bio</a></li>
 //*<li><a href="#gallery">Gallery</a></li>
